@@ -1,0 +1,175 @@
+@use 'variables' as v;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: v.$font-family;
+  font-size: v.$font-size;
+  background-color: v.$red;
+  background-image: url(../images/bg-intro-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4.5rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+.header {
+  width: min(85%, 500px);
+  color: white;
+  &__title {
+    font-size: 3.125rem;
+    font-weight: 700;
+    line-height: 1.125;
+  }
+  &__subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+.content {
+  width: min(85%, 545px);
+}
+
+.section {
+  width: 100%;
+  text-align: center;
+  padding: 1.125rem 3rem;
+  background-color: v.$blue;
+  border-radius: 10px;
+  box-shadow: 0 8px rgba(0, 0, 0, 0.1);
+  &__text {
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.form {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 8px rgba(0, 0, 0, 0.1);
+  &__input {
+    width: 100%;
+    padding: 1.125rem 2rem;
+    padding-right: 4.5rem;
+    border-radius: 5px;
+    border: 1.5px solid v.$grayish-blue;
+    font-weight: 700;
+    &:focus {
+      outline: none;
+      border-color: v.$blue;
+    }
+  }
+  &__btn {
+    width: 100%;
+    padding: 1.125rem 2rem;
+    border-radius: 5px;
+    background-color: v.$green;
+    border: 1.5px solid #2ba671;
+    box-shadow: 0 2px #2ba671;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+    &:active {
+      opacity: 0.75;
+    }
+  }
+  &__terms {
+    font-size: 0.6875rem;
+    text-align: center;
+    color: v.$grayish-blue;
+    font-weight: 600;
+    margin-bottom: 0;
+    &-services {
+      color: v.$red;
+      text-decoration: none;
+    }
+  }
+  &__field {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  &__field--error {
+    margin-bottom: 1.25rem;
+  }
+  &__field--error > input {
+    border: 2px solid v.$red;
+    &::placeholder {
+      color: v.$red;
+    }
+  }
+  &__field--error::after {
+    content: attr(data-error);
+    color: v.$red;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-style: italic;
+    position: absolute;
+    right: 0;
+    bottom: -1.25rem;
+  }
+  &__field--error::before {
+    content: url(../images/icon-error.svg);
+    position: absolute;
+    width: 4.5rem;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    gap: 3.5rem;
+    align-content: center;
+  }
+  .header {
+    margin-top: 6rem;
+    text-align: center;
+    &__title {
+      font-size: 1.5rem;
+    }
+  }
+  .form {
+    margin-bottom: 3.75rem;
+    padding: 1.5rem;
+    &__input {
+      padding: 1.25rem;
+      padding-right: 3.5rem;
+    }
+    &__field--error::before {
+      width: 3.5rem;
+    }
+  }
+}
